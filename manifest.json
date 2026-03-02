@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Fantastic Daily News",
+  "version": "1.3",
+  "description": "Get periodic news popups based on your favorite categories.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "system.display"
+  ],
+  "host_permissions": [
+    "https://newsapi.org/*"
+  ],
+  "action": {
+    "default_title": "News Settings",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
