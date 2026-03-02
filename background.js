@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const NEWS_API_KEY = ""; 
+const NEWS_API_KEY = ""; // News Api Key 
 const DEFAULT_INTERVAL = 15; 
 
 let currentNewsWindowId = null;
@@ -141,3 +141,4 @@ chrome.windows.onRemoved.addListener((windowId) => {
   }
 
 });
+
