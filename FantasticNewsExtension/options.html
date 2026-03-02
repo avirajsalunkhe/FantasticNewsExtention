@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Preferences</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+      --emerald-50: #ecfdf5;
+      --emerald-700: #047857;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      font-family: -apple-system, system-ui, sans-serif;
+      color: var(--slate-700);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: var(--white);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border: 1px solid var(--slate-100);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 2rem;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .header h1 { font-size: 1.5rem; font-weight: 800; }
+    .header p { font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem; }
+
+    .content { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 0.75rem;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Toggle Switch */
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: var(--slate-100);
+      border-radius: 1rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #cbd5e1;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px; width: 18px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider { background-color: var(--primary); }
+    input:checked + .slider:before { transform: translateX(20px); }
+
+    /* Category Grid */
+    .grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .pill {
+      padding: 0.5rem 0.85rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--slate-200);
+      background: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--slate-600);
+      transition: all 0.2s;
+    }
+
+    .pill.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Select box */
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--slate-200);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .save-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .save-btn:hover { background: var(--primary-dark); }
+
+    #save-status {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--emerald-700);
+      padding: 0.5rem;
+      background: var(--emerald-50);
+      border-radius: 0.5rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Fantastic News</h1>
+      <p>Personalize your news cycle</p>
+    </div>
+
+    <div class="content">
+      <div class="status-row">
+        <span style="font-weight: 700; font-size: 0.9rem;">Enable Popups</span>
+        <label class="switch">
+          <input type="checkbox" id="isEnabled" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div>
+        <span class="section-label">News Interval</span>
+        <select id="interval">
+          <option value="10">Every 10 Minutes</option>
+          <option value="15">Every 15 Minutes</option>
+          <option value="30">Every 30 Minutes</option>
+          <option value="60">Every 1 Hour</option>
+        </select>
+      </div>
+
+      <div>
+        <span class="section-label">Your Interests</span>
+        <div id="category-grid" class="grid">
+          <!-- JS will inject buttons here -->
+        </div>
+      </div>
+
+      <button id="save-btn" class="save-btn">Update Preferences</button>
+      <div id="save-status">✓ Settings Saved!</div>
+    </div>
+  </div>
+
+  <!-- LINKING THE EXTERNAL JS FILE (MANDATORY FOR CHROME) -->
+  <script src="options.js"></script>
+</body>
+</html>
