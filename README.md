@@ -363,7 +363,7 @@ Implements all background logic: initialization, scheduling, API fetching, and p
 - Dynamically generates category buttons.
 - Loads settings from Chrome storage.
 - Allows saving changes, with feedback.
-- Ensures at least one category is always selected.
+
 
 ---
 
